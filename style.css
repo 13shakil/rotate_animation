@@ -1,0 +1,27 @@
+ body{
+    height:100vh;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    animation: 1.25s infinite;
+  } 
+  .rotating-element {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    animation: rotate180 1s linear infinite;
+}
+  .rotate {
+    width: 100px;
+    animation: rotation 1s infinite;
+  }
+    @keyframes rotate180 {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(180deg);
+        }
+    }

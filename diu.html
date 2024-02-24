@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotation Animation with Click Toggle</title>
+<style>
+   body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+    @keyframes rotate180 {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(0deg); /* Rotate halfway in 0.5 seconds */
+        }
+        100% {
+            transform: rotate(180deg); /* Complete rotation in another 0.5 seconds */
+        }
+    }
+#a{
+  background-image: url("/abhishek-hajare-98XJ6GBSpzM-unsplash.jpg");
+        width: 100px;
+        height: 100px;
+}
+    .rotating-icon {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(255, 0, 132);
+        transition: transform 1s ease; /* Transition for smooth rotation */
+    }
+
+    .rotated {
+        transform: rotate(0deg); /* Apply rotation immediately */
+        animation: rotate180 1s linear infinite; /* Apply continuous rotation animation */
+    }
+
+    .stopped {
+        animation-play-state: paused; /* Pause the continuous rotation animation */
+    }
+</style>
+</head>
+<body>
+
+<div class="rotating-icon" id="a" onclick="rotateIcon(this)">
+</div>
+
+<script>
+    var rotationInterval;
+
+    function rotateIcon(element) {
+        element.classList.toggle('rotated');
+        if (element.classList.contains('rotated')) {
+            // Start the continuous rotation after 1 second
+            rotationInterval = setTimeout(function() {
+                element.classList.remove('stopped');
+            }, 1000);
+        } else {
+            // Stop the continuous rotation
+            clearTimeout(rotationInterval);
+            element.classList.add('stopped');
+        }
+    }
+</script>
+
+</body>
+</html>
